@@ -299,7 +299,7 @@ describe('promise race', () => {
     })
     
     MyPromise.race([...promises, p]).then(value => {
-      expect(value).toBe(100)
+      expect(value).toBe(4)
       done()
     })
   })
