@@ -13,31 +13,31 @@ test('it should reject 1', () => {
   })
 })
 
-// test('it should resolve 2', done => {
-//   new MyPromise(function(resolve, reject) {
-//     setTimeout(()=> {
-//       resolve(2)
-//     }, 1000)
-//   }).then(function(value){
-//     expect(value).toBe(2)
-//     done()
-//   }, function(reason) {
+test('it should resolve 2', done => {
+  new MyPromise(function(resolve, reject) {
+    setTimeout(()=> {
+      resolve(2)
+    }, 1000)
+  }).then(function(value){
+    expect(value).toBe(2)
+    done()
+  }, function(reason) {
 
-//   })
-// })
+  })
+})
 
-// test('it should reject 2', done => {
-//   new MyPromise(function(resolve, reject) {
-//     setTimeout(() => {
-//       reject(2)
-//     }, 1000)
-//   }).then(function(value) {
+test('it should reject 2', done => {
+  new MyPromise(function(resolve, reject) {
+    setTimeout(() => {
+      reject(2)
+    }, 1000)
+  }).then(function(value) {
 
-//   }, function(reason) {
-//     expect(reason).toBe(2)
-//     done()
-//   })
-// })
+  }, function(reason) {
+    expect(reason).toBe(2)
+    done()
+  })
+})
 
 describe('then', () => {
 
@@ -222,30 +222,30 @@ describe('promise all', () => {
     })
   })
 
-  // test('promiseList should result order', done => {
-  //   let p1 = new MyPromise(resolve => {
-  //     setTimeout(() => {
-  //       resolve(1) 
-  //     }, 300)
-  //   })
+  test('promiseList should result order', done => {
+    let p1 = new MyPromise(resolve => {
+      setTimeout(() => {
+        resolve(1) 
+      }, 300)
+    })
 
-  //   let p2 = new MyPromise(resolve => {
-  //     setTimeout(() => {
-  //       resolve(2) 
-  //     }, 100)
-  //   })
+    let p2 = new MyPromise(resolve => {
+      setTimeout(() => {
+        resolve(2) 
+      }, 100)
+    })
 
-  //   let p3 = new MyPromise(resolve => {
-  //     setTimeout(() => {
-  //       resolve(3) 
-  //     }, 0)
-  //   })
+    let p3 = new MyPromise(resolve => {
+      setTimeout(() => {
+        resolve(3) 
+      }, 0)
+    })
 
-  //   MyPromise.all([p1, p2, p3]).then(value => {
-  //     expect(value).toEqual([1,2,3])
-  //     done()
-  //   })
-  // })
+    MyPromise.all([p1, p2, p3]).then(value => {
+      expect(value).toEqual([1,2,3])
+      done()
+    })
+  })
 
   test('promiseList one reject then reject', () => {
     let promiseList = [1,2,3].map((item) => {
@@ -299,7 +299,7 @@ describe('promise race', () => {
     })
     
     MyPromise.race([...promises, p]).then(value => {
-      expect(value).toBe(4)
+      expect(value).toBe(100)
       done()
     })
   })
